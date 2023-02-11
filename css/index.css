@@ -1,0 +1,8 @@
+.albums .card:hover{
+    outline: 4px solid #ffdb4d;
+}
+
+.albums a{
+    color: #414141;
+    text-decoration: none;
+}
