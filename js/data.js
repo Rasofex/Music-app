@@ -7,27 +7,32 @@ let albums = [
         tracks:[{
             title:`Привычка`,
             author:`Три дня дождя`,
-            time:`2:41`
+            time:`2:41`,
+            src:`music/tri_dnya_dojda-privichka.mp3`
         },
         {
             title:`Asuka`,
             author:`roseboi`,
-            time:`3:30`
+            time:`3:30`,
+            src:`music/roseboi-Asuka.mp3`
         },
         {
             title:`Вместо последней строчки`,
             author:`билборды`,
-            time:`2:27`
+            time:`2:27`,
+            src:`music/bilbordy-Vmesto_poslednej_strochki.mp3`
         },
         {
             title:`White Rabbit!`,
             author:`Egypt Central`,
-            time:`3:37`
+            time:`3:37`,
+            src:`/music/EgyptCentral-WhiteRabbit.mp3`
         },
         {
             title:`sweater holes`,
             author:`дипинс`,
-            time:`2:05`
+            time:`2:05`,
+            src:`music/dipins-sweater_holes.mp3`
         },
         ]
     },
@@ -39,22 +44,26 @@ let albums = [
         tracks:[{
             title:`Привычка`,
             author:`Три дня дождя`,
-            time:`2:41`
+            time:`2:41`,
+            src:`music/tri_dnya_dojda-privichka.mp3`
         },
         {
             title:`Asuka`,
             author:`roseboi`,
-            time:`3:30`
+            time:`3:30`,
+            src:`music/roseboi-Asuka.mp3`
         },
         {
             title:`Вместо последней строчки`,
             author:`билборды`,
-            time:`2:27`
+            time:`2:27`,
+            src:`music/bilbordy-Vmesto_poslednej_strochki.mp3`
         },
         {
             title:`White Rabbit!`,
             author:`Egypt Central`,
-            time:`3:37`
+            time:`3:37`,
+            src:`music/EgyptCentral-WhiteRabbit.mp3`
         }
         ]
     },
@@ -66,22 +75,26 @@ let albums = [
         tracks:[{
             title:`Привычка`,
             author:`Три дня дождя`,
-            time:`2:41`
+            time:`2:41`,
+            src:`music/tri_dnya_dojda-privichka.mp3`
         },
         {
             title:`Asuka`,
             author:`roseboi`,
-            time:`3:30`
+            time:`3:30`,
+            src:`music/roseboi-Asuka.mp3`
         },
         {
             title:`Вместо последней строчки`,
             author:`билборды`,
-            time:`2:27`
+            time:`2:27`,
+            src:`music/bilbordy-Vmesto_poslednej_strochki.mp3`
         },
         {
             title:`White Rabbit!`,
             author:`Egypt Central`,
-            time:`3:37`
+            time:`3:37`,
+            src:`music/EgyptCentral-WhiteRabbit.mp3`
         }
         ]
     },
@@ -93,22 +106,26 @@ let albums = [
         tracks:[{
             title:`Привычка`,
             author:`Три дня дождя`,
-            time:`2:41`
+            time:`2:41`,
+            src:`music/tri_dnya_dojda-privichka.mp3`
         },
         {
             title:`Asuka`,
             author:`roseboi`,
-            time:`3:30`
+            time:`3:30`,
+            src:`music/roseboi-Asuka.mp3`
         },
         {
             title:`Вместо последней строчки`,
             author:`билборды`,
-            time:`2:27`
+            time:`2:27`,
+            src:`music/bilbordy-Vmesto_poslednej_strochki.mp3`
         },
         {
             title:`White Rabbit!`,
             author:`Egypt Central`,
-            time:`3:37`
+            time:`3:37`,
+            src:`music/EgyptCentral-WhiteRabbit.mp3`
         }
         ]
     }
