@@ -54,9 +54,7 @@ function renderTracks() {
                   <div>${track.title}</div>
                   <div class="text-secondary">${track.author}</div>
                 </div>
-                <div class="ms-auto">
-                ${track.time}
-                </div>
+                <div class="ms-auto">${track.time}</div>
                 <audio class="audio" src="${track.src}"></audio>
             </li>
         `
@@ -64,28 +62,59 @@ function renderTracks() {
 }
 function renderAudio() {
     let trackNodes = document.querySelectorAll(`.track`); 
-    let currentlyPlayingAudio;
     let status = document.querySelectorAll(`.plr-stat`);
     let audioTime = document.querySelectorAll(`.ms-auto`);
-    for (let i = 0; i < trackNodes.length; i++) {
+    for (let i = 0; i < trackNodes.length; i++) { 
+        let timeNode = audioTime[i];
         let node = trackNodes[i];
         let plr = status[i];
-        let time = audioTime[i];
-        let audio = node.querySelector(`.audio`);
+        let audio = node.querySelector(`.audio`); 
         node.addEventListener(`click`, () => {
-            if (currentlyPlayingAudio === audio) {
-                audio.pause();
-                currentlyPlayingAudio = null;
-                plr.classList.replace(`fa-circle-pause`, `fa-circle-play`);
-            } else {
-                if (currentlyPlayingAudio) {
-                    currentlyPlayingAudio.pause();
-                    audio.currentTime = 0;
+            for (let j = 0; j < trackNodes.length; j++) {
+                let currNode = trackNodes[j];
+                if (currNode.isPlaying) {
+                    currNode.isPlaying = false;
+                    currNode.querySelector(`.audio`).pause();
+                    status[j].classList.remove(`fa-circle-pause`);
+                    status[j].classList.add(`fa-circle-play`);
+                    currNode.querySelector(`.audio`).currentTime = 0
+                    break;
                 }
-                audio.play();
-                currentlyPlayingAudio = audio;
-                plr.classList.replace(`fa-circle-play`, `fa-circle-pause`);
             }
-    });
+            if (node.isPlaying) {
+                node.isPlaying = false;
+                audio.pause();
+                plr.classList.remove(`fa-circle-pause`);
+                plr.classList.add(`fa-circle-play`);
+            } else {
+                node.isPlaying = true;
+                audio.play();
+                plr.classList.remove(`fa-circle-play`);
+                plr.classList.add(`fa-circle-pause`);
+                updateProgress();
+            }
+        });
+        function updateProgress() {
+            let time = getTime(audio.currentTime);
+            if(timeNode.innerHTML != time) {
+                timeNode.innerHTML = time;
+            }
+            if (node.isPlaying) {
+                  requestAnimationFrame(updateProgress);
+            }
+        }
+    }
+    function getTime(time){
+        let currentSeconds = Math.floor(time);
+        let minutes = Math.floor(currentSeconds / 60);
+        let seconds = Math.floor(currentSeconds % 60);
+
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+        return `${minutes}:${seconds}`;
     }
 }
