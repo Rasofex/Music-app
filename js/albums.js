@@ -46,7 +46,7 @@ function renderTracks() {
     for (let i = 0; i < tracks.length; i++) {
         let track = tracks[i];
         playlist.innerHTML += `
-            <li class="list-group-item d-flex align-items-center track">
+            <li class="list-group-item d-flex align-items-center track" id="${track.id}">
                 <div class="me-3 d-flex justify-content-center" style="width: 30px;">
                   <i class="fa-solid fa-circle-play plr-stat" style="font-size: 27px;"></i>
                 </div>
@@ -70,11 +70,14 @@ function renderAudio() {
         let node = trackNodes[i];
         let plr = status[i];
         let track = tracks[i];
+        let id = node.id;
+        let currID;
         let audio = node.querySelector(`.audio`); 
         node.addEventListener(`click`, () => {
+            // Change music
             for (let j = 0; j < trackNodes.length; j++) {
                 let currNode = trackNodes[j];
-                if (currNode.isPlaying) {
+                if (currNode.isPlaying && currID != currNode.id) {
                     currNode.isPlaying = false;
                     currNode.querySelector(`.audio`).pause();
                     status[j].classList.remove(`fa-circle-pause`);
@@ -83,31 +86,34 @@ function renderAudio() {
                     break;
                 }
             }
+            // Stop music
             if (node.isPlaying) {
                 node.isPlaying = false;
                 audio.pause();
-                plr.classList.remove(`fa-circle-pause`);
-                plr.classList.add(`fa-circle-play`);
-            } else if (!node.isPlaying)  {
+                plr.classList.add(`fa-circle-pause`);
+                plr.classList.remove(`fa-circle-play`);
+            }
+            // Start music
+            if (!node.isPlaying)  {
                 node.isPlaying = true;
                 audio.play();
-                plr.classList.remove(`fa-circle-play`);
-                plr.classList.add(`fa-circle-pause`);
+                status[i].classList.remove(`fa-circle-play`);
+                status[i].classList.add(`fa-circle-pause`);
+                currID = id
                 updateProgress();
             }
         });
         function updateProgress() {
-            let time = getTime(audio.currentTime);
-            if(timeNode.innerHTML != time) {
-                timeNode.innerHTML = time;
-            }
             if (node.isPlaying) {
-                requestAnimationFrame(updateProgress);
+              let time = getTime(audio.currentTime);
+              if(timeNode.innerHTML != time) {
+                timeNode.innerHTML = time;
+              }
+              requestAnimationFrame(updateProgress);
+            } else if (!node.isPlaying) {
+              timeNode.innerHTML = track.time;
             }
-            else if (!node.isPlaying) {
-                timeNode.innerHTML = track.time;
-            }
-        }
+          }
     }
     function getTime(time){
         let currentSeconds = Math.floor(time);

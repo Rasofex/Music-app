@@ -9,35 +9,40 @@ let albums = [
             author:`Три дня дождя`,
             time:`2:41`,
             src:`music/tri_dnya_dojda-privichka.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '1'
         },
         {
             title:`Asuka`,
             author:`roseboi`,
             time:`3:30`,
             src:`music/roseboi-Asuka.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '2'
         },
         {
             title:`Вместо последней строчки`,
             author:`билборды`,
             time:`2:27`,
             src:`music/bilbordy-Vmesto_poslednej_strochki.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '3'
         },
         {
             title:`White Rabbit`,
             author:`Egypt Central`,
             time:`3:37`,
             src:`/music/EgyptCentral-WhiteRabbit.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '4'
         },
         {
             title:`sweater holes`,
             author:`дипинс`,
             time:`2:05`,
             src:`music/dipins-sweater_holes.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '5'
         },
         ]
     },
@@ -51,28 +56,32 @@ let albums = [
             author:`Три дня дождя`,
             time:`2:41`,
             src:`music/tri_dnya_dojda-privichka.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '1'
         },
         {
             title:`Asuka`,
             author:`roseboi`,
             time:`3:30`,
             src:`music/roseboi-Asuka.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '2'
         },
         {
             title:`Вместо последней строчки`,
             author:`билборды`,
             time:`2:27`,
             src:`music/bilbordy-Vmesto_poslednej_strochki.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '3'
         },
         {
             title:`White Rabbit!`,
             author:`Egypt Central`,
             time:`3:37`,
             src:`music/EgyptCentral-WhiteRabbit.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '4'
         }
         ]
     },
@@ -86,28 +95,32 @@ let albums = [
             author:`Три дня дождя`,
             time:`2:41`,
             src:`music/tri_dnya_dojda-privichka.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '1'
         },
         {
             title:`Asuka`,
             author:`roseboi`,
             time:`3:30`,
             src:`music/roseboi-Asuka.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '2'
         },
         {
             title:`Вместо последней строчки`,
             author:`билборды`,
             time:`2:27`,
             src:`music/bilbordy-Vmesto_poslednej_strochki.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '3'
         },
         {
             title:`White Rabbit!`,
             author:`Egypt Central`,
             time:`3:37`,
             src:`music/EgyptCentral-WhiteRabbit.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '4'
         }
         ]
     },
@@ -121,28 +134,32 @@ let albums = [
             author:`Три дня дождя`,
             time:`2:41`,
             src:`music/tri_dnya_dojda-privichka.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '1'
         },
         {
             title:`Asuka`,
             author:`roseboi`,
             time:`3:30`,
             src:`music/roseboi-Asuka.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '2'
         },
         {
             title:`Вместо последней строчки`,
             author:`билборды`,
             time:`2:27`,
             src:`music/bilbordy-Vmesto_poslednej_strochki.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '3'
         },
         {
             title:`White Rabbit!`,
             author:`Egypt Central`,
             time:`3:37`,
             src:`music/EgyptCentral-WhiteRabbit.mp3`,
-            isPlaying: false
+            isPlaying: false,
+            id: '4'
         }
         ]
     }
