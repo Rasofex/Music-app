@@ -64,10 +64,12 @@ function renderAudio() {
     let trackNodes = document.querySelectorAll(`.track`); 
     let status = document.querySelectorAll(`.plr-stat`);
     let audioTime = document.querySelectorAll(`.ms-auto`);
+    let tracks = album.tracks;
     for (let i = 0; i < trackNodes.length; i++) { 
         let timeNode = audioTime[i];
         let node = trackNodes[i];
         let plr = status[i];
+        let track = tracks[i];
         let audio = node.querySelector(`.audio`); 
         node.addEventListener(`click`, () => {
             for (let j = 0; j < trackNodes.length; j++) {
@@ -77,7 +79,7 @@ function renderAudio() {
                     currNode.querySelector(`.audio`).pause();
                     status[j].classList.remove(`fa-circle-pause`);
                     status[j].classList.add(`fa-circle-play`);
-                    currNode.querySelector(`.audio`).currentTime = 0
+                    currNode.querySelector(`.audio`).currentTime = 0;
                     break;
                 }
             }
@@ -86,7 +88,7 @@ function renderAudio() {
                 audio.pause();
                 plr.classList.remove(`fa-circle-pause`);
                 plr.classList.add(`fa-circle-play`);
-            } else {
+            } else if (!node.isPlaying)  {
                 node.isPlaying = true;
                 audio.play();
                 plr.classList.remove(`fa-circle-play`);
@@ -100,7 +102,10 @@ function renderAudio() {
                 timeNode.innerHTML = time;
             }
             if (node.isPlaying) {
-                  requestAnimationFrame(updateProgress);
+                requestAnimationFrame(updateProgress);
+            }
+            else if (!node.isPlaying) {
+                timeNode.innerHTML = track.time;
             }
         }
     }
@@ -110,7 +115,7 @@ function renderAudio() {
         let seconds = Math.floor(currentSeconds % 60);
 
         if (minutes < 10) {
-            minutes = '0' + minutes;
+            minutes = minutes;
         }
         if (seconds < 10) {
             seconds = '0' + seconds;

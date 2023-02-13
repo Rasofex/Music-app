@@ -26,7 +26,7 @@ let albums = [
             isPlaying: false
         },
         {
-            title:`White Rabbit!`,
+            title:`White Rabbit`,
             author:`Egypt Central`,
             time:`3:37`,
             src:`/music/EgyptCentral-WhiteRabbit.mp3`,
