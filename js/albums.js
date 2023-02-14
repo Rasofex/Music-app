@@ -51,8 +51,11 @@ function renderTracks() {
                   <i class="fa-solid fa-circle-play plr-stat" style="font-size: 27px;"></i>
                 </div>
                 <div>
-                  <div>${track.title}</div>
-                  <div class="text-secondary">${track.author}</div>
+                    <div>${track.title}</div>
+                    <div class="text-secondary">${track.author}</div>
+                    <div class="progress" style="height: 5px; width: 100%">
+                        <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
+                    </div>
                 </div>
                 <div class="ms-auto">${track.time}</div>
                 <audio class="audio" src="${track.src}"></audio>
@@ -72,6 +75,7 @@ function renderAudio() {
       let plr = status[i];
       let track = tracks[i];
       let id = node.id;
+      let progressBar = node.querySelector(`.progress-bar`);
       let audio = node.querySelector(`.audio`); 
       node.addEventListener(`click`, () => {
         if (currID !== id) {
@@ -115,6 +119,7 @@ function renderAudio() {
               let time = getTime(audio.currentTime);
               if(timeNode.innerHTML != time) {
                 timeNode.innerHTML = time;
+                progressBar.style.width = audio.currentTime*100/audio.duration + `%`;
               }
               requestAnimationFrame(updateProgress);
             }
