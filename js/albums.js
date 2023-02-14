@@ -61,49 +61,55 @@ function renderTracks() {
     }
 }
 function renderAudio() {
-    let trackNodes = document.querySelectorAll(`.track`); 
+    let trackNodes = document.querySelectorAll(`.track`);
     let status = document.querySelectorAll(`.plr-stat`);
     let audioTime = document.querySelectorAll(`.ms-auto`);
     let tracks = album.tracks;
+    let currID = null;
     for (let i = 0; i < trackNodes.length; i++) { 
-        let timeNode = audioTime[i];
-        let node = trackNodes[i];
-        let plr = status[i];
-        let track = tracks[i];
-        let id = node.id;
-        let currID;
-        let audio = node.querySelector(`.audio`); 
-        node.addEventListener(`click`, () => {
-            // Change music
+      let timeNode = audioTime[i];
+      let node = trackNodes[i];
+      let plr = status[i];
+      let track = tracks[i];
+      let id = node.id;
+      let audio = node.querySelector(`.audio`); 
+      node.addEventListener(`click`, () => {
+        if (currID !== id) {
+            currID = id;
+            audio.currentTime = 0;
             for (let j = 0; j < trackNodes.length; j++) {
-                let currNode = trackNodes[j];
-                let time = currNode.querySelector(`.ms-auto`);
-                if (currNode.isPlaying) {
-                    if (currID != currNode.id) {
-                        currNode.isPlaying = false;
-                        currNode.querySelector(`.audio`).pause();
-                        status[j].classList.remove(`fa-circle-pause`);
-                        status[j].classList.add(`fa-circle-play`);
-                        currNode.querySelector(`.audio`).currentTime = 0;
-                        time.innerHTML = track.time;
-                    } else { 
-                        currNode.isPlaying = false; 
-                        status[j].classList.add(`fa-circle-play`); 
-                        status[j].classList.remove(`fa-circle-pause`); 
-                        currNode.querySelector(`.audio`).pause(); 
-                    } break; 
-                } 
+                let trackNode = trackNodes[j];
+                let plrNode = status[j];
+                let timeAudio = audioTime[j];
+                let audioNode = trackNode.querySelector(`.audio`);
+                if (trackNode.isPlaying) {
+                    trackNode.isPlaying = false;
+                    audioNode.pause();
+                    plrNode.classList.add(`fa-circle-play`);
+                    plrNode.classList.remove(`fa-circle-pause`);
+                    timeAudio.innerHTML = track.time;
+                }
             }
-            // Start music
-            if (!node.isPlaying)  {
+            node.isPlaying = true;
+            audio.play();
+            plr.classList.remove(`fa-circle-play`);
+            plr.classList.add(`fa-circle-pause`);
+            updateProgress();
+        } else { 
+            if (node.isPlaying) {
+                node.isPlaying = false;
+                audio.pause();
+                plr.classList.add(`fa-circle-play`);
+                plr.classList.remove(`fa-circle-pause`);
+            } else {
                 node.isPlaying = true;
                 audio.play();
-                status[i].classList.remove(`fa-circle-play`);
-                status[i].classList.add(`fa-circle-pause`);
-                currID = id
+                plr.classList.remove(`fa-circle-play`);
+                plr.classList.add(`fa-circle-pause`);
                 updateProgress();
             }
-        });
+        }
+      });
         function updateProgress() {
             if (node.isPlaying) {
               let time = getTime(audio.currentTime);
